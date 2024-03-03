@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetch = ({ crd }) => {
+const useFetchWeather = ({ crd }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -22,4 +22,4 @@ const useFetch = ({ crd }) => {
   return { data, loading };
 };
 
-export default useFetch;
+export default useFetchWeather;

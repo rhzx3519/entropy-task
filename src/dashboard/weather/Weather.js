@@ -1,15 +1,11 @@
 import React from 'react';
-import useFetch from '../hooks/useFetch';
+import useFetchWeather from '../hooks/useFetchWeather';
 import styled from 'styled-components';
-import { Bars } from "react-loader-spinner";
 import WeatherCard from './WeatherCard';
 import useGeoLocation from '../hooks/useGeoLocation';
+import LoaderWrapper from '../common/LoaderWrapper';
 import './Weather.css';
 
-
-const LoaderWrapper = styled.div`
-  margin: auto;
-`;
 
 const CardWrapper = (data) => {
   return (<>
@@ -19,21 +15,11 @@ const CardWrapper = (data) => {
 
 const Weather = () => {
   const { crd } = useGeoLocation();
-  const { data, loading } = useFetch({ crd });
+  const { data, loading } = useFetchWeather({ crd });
 
   return (<div className='Weather'>
     {loading ? (
-      <LoaderWrapper>
-        <Bars
-          height="80"
-          width="80"
-          color="#ffffff"
-          ariaLabel="bars-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </LoaderWrapper>
+      <LoaderWrapper />
     ) :
       <CardWrapper data={data} />
     }

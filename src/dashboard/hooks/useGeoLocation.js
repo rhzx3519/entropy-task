@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useGeoLocation = () => {
-  const [ crd, setCrd ] = useState(null);
+  const [crd, setCrd] = useState(null);
 
   const options = {
     enableHighAccuracy: true,
@@ -12,7 +12,7 @@ const useGeoLocation = () => {
   useEffect(() => {
     function getLocation() {
       if (navigator.geolocation) {
-        navigator.permissions.query({name:'geolocation'}).then(permissionStatus => {
+        navigator.permissions.query({ name: 'geolocation' }).then(permissionStatus => {
           if (permissionStatus.state === 'denied') {
             alert('Please allow location access.');
             window.location.href = "app-settings:location";
@@ -23,11 +23,11 @@ const useGeoLocation = () => {
               // console.log(`Longitude: ${pos.coords.longitude}`);
               // console.log(`More or less ${pos.coords.accuracy} meters.`);
               setCrd(pos.coords);
-            }, 
-            (err) => {
-              console.warn(`ERROR(${err.code}): ${err.message}`);
-            }, 
-            options);
+            },
+              (err) => {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+              },
+              options);
           }
 
         });

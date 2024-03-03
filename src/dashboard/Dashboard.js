@@ -18,10 +18,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
 import Orders from './Orders';
 import Weather from './weather/Weather';
+import Newsfeed from './newsfeed/Newsfeed';
 
 function Copyright(props) {
   return (
@@ -164,17 +163,18 @@ export default function Dashboard() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
+              {/* Newsfeed */}
               <Grid item xs={8} md={8} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 580,
+                    backgroundColor: '#312520',
                   }}
                 >
-                  <Chart />
+                  <Newsfeed />
                 </Paper>
               </Grid>
               {/* Weather Widget */}
