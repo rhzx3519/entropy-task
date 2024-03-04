@@ -7,8 +7,35 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import { randomId } from '@mui/x-data-grid-generator';
+import { GridRowModes, GridToolbarContainer } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
 
-function EnhancedTableToolbar(props) {
+
+export function EditToolbar(props) {
+  const { tasks, setTasks, setRowModesModel } = props;
+
+  const handleClick = () => {
+    const id = randomId();
+    setTasks((oldRows) => [...oldRows, { id, order: tasks.length + 1, content: '', labels: '', priority: 1, due_date: new Date(), isNew: true }]);
+    setRowModesModel((oldModel) => ({
+      ...oldModel,
+      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'content' },
+    }));
+  };
+
+  return (
+    <GridToolbarContainer>
+      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+        Add task
+      </Button>
+    </GridToolbarContainer>
+  );
+}
+
+
+export function EnhancedTableToolbar(props) {
   const { numSelected } = props;
 
   return (
@@ -62,5 +89,3 @@ function EnhancedTableToolbar(props) {
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
-
-export default EnhancedTableToolbar;

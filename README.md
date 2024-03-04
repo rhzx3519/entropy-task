@@ -4,6 +4,36 @@ This project is built with React and JavaScript. There are three main widgets in
 weather, newsfeed and task manager, which are all fetching data from server. The project is now deployed
 on AWS ec2, you can acess it via [https://ec2-3-27-86-30.ap-southeast-2.compute.amazonaws.com/](https://ec2-3-27-86-30.ap-southeast-2.compute.amazonaws.com/). 
 
+## Project structure
+
+```shell
+.
+├── Dockerfile           // Used to build docker image
+├── Makefile             // Run make command
+├── README.md
+├── build.sh            // Build script
+├── compose.yaml        // Docker compose configuration
+├── nginx         
+│   ├── nginx.conf      // Nginx config file
+│   └── ssl             // Https SSL screts
+│       ├── cert.pem
+│       └── key.pem
+└── src
+    ├── App.css
+    ├── App.js
+    ├── __tests__       // Store react test files
+    │   └── weather.test.jsx
+    ├── dashboard       // Store dashboard related .js|.jsx files
+    │   ├── common      // Store common react components
+    │   ├── contexts    // Store react contexts
+    │   ├── hooks       // Store react custom hooks
+    │   ├── newsfeed    // Store newsfeed related .js|.jsx files
+    │   ├── tasks       // Store tasks related .js|.jsx files
+    │   └── weather     // Store weather related .js|.jsx files
+    ├── index.js
+
+```
+
 # Related tools
 - **[MUI](https://www.mui.com/)**
 - **[Nginx](https://www.nginx.com/)**
@@ -12,8 +42,10 @@ on AWS ec2, you can acess it via [https://ec2-3-27-86-30.ap-southeast-2.compute.
 
 
 # Instructions
+For developers, clone this repository, and run `npm install` under the repo root path to install necessary dependencies.
+Then run `npm start` to kick off this react project.    
 For local setup, run `make build` to build a docker image. Please note, the default docker arch is arm64. 
-If your computer system is linux, you can run `make build docker amd64` to build a docker image based on amd64 architecture. Then run `make run` to bootstrap docker compose, the access address is (https://127.0.0.1)[https://127.0.0.1].
+If your computer system is linux, you can run `make build docker amd64` to build a docker image based on amd64 architecture. Then run `make run` to bootstrap docker compose, the access address is [https://127.0.0.1](https://127.0.0.1).
 
 # Features
 ## Weather

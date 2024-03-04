@@ -1,8 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { TableContainer, Rating, Box } from "@mui/material";
 import { useFetchTasks } from "../hooks/useFetchTodoist";
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
@@ -14,7 +12,6 @@ import { unstable_useEnhancedEffect as useEnhancedEffect } from '@mui/utils';
 import {
   GridRowModes,
   DataGrid,
-  GridToolbarContainer,
   GridActionsCellItem,
   GridRowEditStopReasons,
   useGridApiContext,
@@ -22,29 +19,9 @@ import {
 import {
   randomId,
 } from '@mui/x-data-grid-generator';
-import EnhancedTableToolbar from "./TaskTitle";
+import { EnhancedTableToolbar, EditToolbar} from "./TaskToolBar";
 
 
-function EditToolbar(props) {
-  const { tasks, setTasks, setRowModesModel } = props;
-
-  const handleClick = () => {
-    const id = randomId();
-    setTasks((oldRows) => [...oldRows, { id, order: tasks.length + 1, content: '', labels: '', priority: 1, due_date: new Date(), isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'content' },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Add task
-      </Button>
-    </GridToolbarContainer>
-  );
-}
 
 
 const TaskManager = () => {
