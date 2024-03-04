@@ -164,7 +164,7 @@ export default function Dashboard() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Newsfeed */}
-              <Grid item xs={8} md={8} lg={9}>
+              <Grid item xs={12} md={12} lg={9}>
                 <Paper
                   sx={{
                     p: 2,
@@ -178,7 +178,7 @@ export default function Dashboard() {
                 </Paper>
               </Grid>
               {/* Weather Widget */}
-              <Grid item xs={4} md={4} lg={3}>
+              <Grid item xs={6} md={6} lg={3}>
                 <Paper
                   sx={{
                     p: 0,

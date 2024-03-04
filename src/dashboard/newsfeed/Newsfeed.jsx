@@ -1,21 +1,11 @@
 import { useState } from "react";
 import NewsTabs from "./NewsTabs";
 import NewsCard from "./NewsCard";
-import styled from "styled-components";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { Container, CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import useFetchNews from "../hooks/useFetchNews";
 import LoaderWrapper from '../common/LoaderWrapper';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-`;
 
 const categories = [ 'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology' ]
 const DEFAULT_CATEGORY = 'business'

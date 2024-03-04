@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-const TOKEN = 'VNhHo62Q6pt7fslSYRpP_R_J2ZKj9xPUdJEa5olyuax3wjM0';
-
 // category options: business entertainment general health science sports technology
 const useFetchNews = ({ category }) => {
   const [data, setData] = useState(null);
