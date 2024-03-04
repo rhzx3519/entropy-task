@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built with React and JavaScript. There are three main widgets including 
+weather, newsfeed and task manager, which are all fetching data from server. The project is now deployed
+on AWS ec2, you can acess it via [https://ec2-3-27-86-30.ap-southeast-2.compute.amazonaws.com/](https://ec2-3-27-86-30.ap-southeast-2.compute.amazonaws.com/). 
 
-## Available Scripts
+# Related tools
+- **[MUI](https://www.mui.com/)**
+- **[Nginx](https://www.nginx.com/)**
+- **[GitHub Workflow](https://docs.github.com/en/actions/using-workflows)**
+- **[Docker](https://www.docker.com/)**
 
-In the project directory, you can run:
 
-### `npm start`
+# Instructions
+For local setup, run `make build` to build a docker image. Please note, the default docker arch is arm64. 
+If your computer system is linux, you can run `make build docker amd64` to build a docker image based on amd64 architecture. Then run `make run` to bootstrap docker compose, the access address is (https://127.0.0.1)[https://127.0.0.1].
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Features
+## Weather
+The weather is firstly ask the browser permission to get the location information, then it will visit [OpenWeatherMap](https://openweathermap.org/api) to fetch weather information based on the location. I mainly use [styled](https://styled-components.com/) to write CSS and leaverage [Flex](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox) to make layout. The code is in [weather](src/dashboard/weather/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Newsfeed
+I use MUI [tabs](https://mui.com/material-ui/react-tabs/) and [grid](https://mui.com/material-ui/react-grid/) to complete this part. The news is all from [NewsAPI](https://github.com/SauravKanchan/NewsAPI). Users could browse news based on difference categories.
+The code is in [newsfeed](src/dashboard/newsfeed/).
 
-### `npm test`
+## Task manager
+Compared with the others two widgets, task manager involves create, update, and delete operations other than reading. All these tasks are based on [Todoist](https://app.todoist.com/). I use [MUI X Data Grid](https://mui.com/x/react-data-grid/) to realize this feature. 
+The code is in [tasks](src/dashboard/tasks/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Other features
+- Environment Configration: Use [env-cmd](https://www.npmjs.com/package/env-cmd) to enable environment variable configuration in different .env files.
+- Automatic Build: Use [GitHub Workflow](https://docs.github.com/en/actions/using-workflows) to build the docker image automatically when
+new push on the master branch.
+- Mobile friendly: With MUI Grid as the main container, newsfeed and weather widges present in different rows on the mobile browser, making these two widgets have enough space to display on the page.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Wrap up
+For convenience, deploy scripts and configuration is also included in the same repository. In production environment, deploy related code will be in another repository for security consideration.

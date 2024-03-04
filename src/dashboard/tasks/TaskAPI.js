@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const API_SERVER_URL = 'https://api.todoist.com/rest/v2/tasks/'
-const TOKEN = 'b07d385b5bc7580dee424255471a78a82298d52d';
+const TOKEN = process.env.REACT_APP_TASK_API_KEY;
 const PROJECT_ID = '2329648933';
 
 export async function fetchTasks() {

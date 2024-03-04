@@ -1,6 +1,8 @@
 SHELL=/bin/bash
 
 .PHONY: build run clean 
+run: clean
+	docker-compose up -d --force-recreate
 
 docker=
 arch=
@@ -9,9 +11,6 @@ build:
 
 push:
 	docker push rhzx3519/entropy-task
-
-run: clean
-	docker-compose up -d --force-recreate
 
 clean:
 	docker-compose down

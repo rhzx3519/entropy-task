@@ -20,10 +20,7 @@ import {
   useGridApiContext,
 } from '@mui/x-data-grid';
 import {
-  randomCreatedDate,
-  randomTraderName,
   randomId,
-  randomArrayItem,
 } from '@mui/x-data-grid-generator';
 import EnhancedTableToolbar from "./TaskTitle";
 
@@ -274,7 +271,7 @@ const TaskManager = () => {
     }
 
     // otherwise update the row
-    const resp = await updateTask(newRow.id, updated)
+    await updateTask(newRow.id, updated)
     setRefresh(randomId())
     return newRow
   };

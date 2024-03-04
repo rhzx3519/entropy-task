@@ -1,6 +1,5 @@
 import React from 'react';
 import useFetchWeather from '../hooks/useFetchWeather';
-import styled from 'styled-components';
 import WeatherCard from './WeatherCard';
 import useGeoLocation from '../hooks/useGeoLocation';
 import LoaderWrapper from '../common/LoaderWrapper';
