@@ -29,7 +29,7 @@ const NewsCard = ({ article }) => {
   return (
     <Grid container spacing={3}>
         <Grid item xs={8} md={8} lg={9}>
-          <div style={{ backgroundColor: '#696969', width: '150px', textAlign: 'center', color: '#dbe7fc' }}>{article.source?.name}</div>
+          <div style={{ backgroundColor: '#696969', width: '100px', textAlign: 'center', color: '#dbe7fc' }}>{article.source?.name}</div>
           <TitleWrapper>{article.title}</TitleWrapper>
         </Grid>
         <Grid item xs={4} md={4} lg={3}>
