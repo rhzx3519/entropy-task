@@ -18,16 +18,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Orders from './Orders';
 import Weather from './weather/Weather';
 import Newsfeed from './newsfeed/Newsfeed';
+import TaskManager from './tasks/TaskManager';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        {process.env.REACT_APP_STATIC_SERVER_URL}
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -85,7 +85,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -191,10 +191,10 @@ export default function Dashboard() {
                   <Weather />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
+              {/* Task Manager  */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <TaskManager />
                 </Paper>
               </Grid>
             </Grid>
